@@ -1,0 +1,128 @@
+.listpage-elements{
+  position: relative;
+}
+.ListPage-searchsection {
+  padding-top: 1.5rem;
+  padding-bottom: 8rem;
+  background: rgb(0, 42, 59);
+  color: #fff;
+}
+
+.ListPage-searchsection > h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.ListPage-searchsection > input[type="text"] {
+  position: absolute;
+  width: 829px;
+  height: 50px;
+  left: 180px;
+  top: 150px;
+  box-shadow: 0px 4px 50px rgba(111, 111, 111, 0.1);
+  border-radius: 12px;
+  background: #ffffff;
+  font-family: "Poppins";
+  font-style: normal;
+}
+
+.ListPage-searchsection > select {
+  position: absolute;
+  width: 110px;
+  height: 50px;
+  left: 1100px;
+  top: 150px;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  font-family: "Poppins", sans-serif;
+  color: #000000;
+}
+
+.ListPage-searchsection > input[type="text"]::placeholder {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 20px;
+  color: #858585;
+  background: url("https://static.thenounproject.com/png/101791-200.png")
+    no-repeat left;
+  background-size: 20px;
+  padding-left: 25px;
+}
+
+.ListPage-cardsection{
+  background: #003145;
+    padding: 3rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.ListPage-card{
+  margin-left: 6.2rem;
+  margin-bottom: 4rem;
+width: 320px;
+height: 433px;
+background: #FFFFFF;
+box-shadow: 0px 4px 43px rgba(0, 0, 0, 0.08);
+border-radius: 15px;
+overflow: hidden;
+}
+
+.ListPage-card-first{
+  height: 40%;
+  width: 100%;
+}
+
+.ListPage-card-first>img{
+  height: 100%;
+  width: 100%;
+}
+
+.ListPage-card-second{
+  margin-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 10px;
+}
+
+.ListPage-card-second>h2{
+  line-height: 0px;
+  margin-top: 0.8rem;
+}
+
+.ListPage-card-second>p:first-of-type{
+  line-height: 0px;
+text-align: center;
+background: rgba(242, 201, 76, 0.25);
+border-radius: 5px;
+padding: 10px;
+}
+
+.ListPage-card-second>p:last-of-type{
+  font-weight: 600;
+}
+
+.ListPage-card-second>button{
+  width: 180px;
+  height: 42px;
+  background: #44924c;
+  border-radius: 7px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: #ffffff;
+  border: 0px;
+  cursor: pointer;
+}
+
+

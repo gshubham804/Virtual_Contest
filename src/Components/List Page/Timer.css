@@ -1,0 +1,37 @@
+.timer-main{
+    width: 145px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.timer-common{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-para{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 0px;
+    text-align: center;
+    color: #242424;
+    margin-bottom: 1rem;
+}
+
+.timer-first{
+background-color:rgb(232, 229, 229);
+padding:3px 6px;
+border-radius: 5px;
+line-height: 0px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 17px;
+line-height: 28px;
+color: #454545;
+}

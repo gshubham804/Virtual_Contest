@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.CreateChallenges-main {
+  margin: 0%;
+  padding-left: 4rem;
+  padding-bottom: 5rem;
+  margin-top: 2rem;
+}
+
+.CreateChallenges-head {
+  height: 80px;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0%;
+}
+
+label {
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-size: 1.15rem;
+  line-height: 60px;
+}
+
+input,
+textarea,
+select {
+  width: 453px;
+  height: 39px;
+  border: 1px solid #b7b7b7;
+  border-radius: 5px;
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+
+textarea {
+  padding-top: 1rem;
+  width: 817px;
+  height: 252px;
+  font-size: 1.1rem;
+}
+
+input[type="file"]{
+  width: 236px;
+  height: 40px;
+padding-top: 1rem;
+}
+
+select {
+  width: 236px;
+  height: 39px;
+  margin-bottom: 2rem;
+}
+
+option {
+  font-family: "Poppins", sans-serif;
+  text-align: start;
+}
+
+input[type="text"] {
+  line-height: 25px;
+}
+
+.CreateChallenges-btn {
+  width: 214px;
+  height: 46px;
+  background: #44924c;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #ffffff;
+  border: 0px;
+  cursor: pointer;
+}
