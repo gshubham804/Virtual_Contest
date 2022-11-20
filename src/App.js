@@ -8,11 +8,11 @@ import Navbar from './Components/Navbar/Navbar';
 function App() {
   return (
     <>
-    <Navbar/> 
-    <CommonPage/>
+    {/* <Navbar/>  */}
+    {/* <CommonPage/> */}
     <ListPage/> 
      {/* <Timer/> */}
-    <CreateChallenges/>
+    {/* <CreateChallenges/> */}
     </>
   );
 }
