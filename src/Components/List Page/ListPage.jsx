@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect } from "react";
 import firebase from "firebase/compat/app";
 import "./ListPage.css";
-import { useState , useRef} from "react";
+import { useState, useRef } from "react";
 import Timer from "./Timer";
-import moment from 'moment'
+import moment from "moment";
 
 export const ListPage = () => {
   const [borderRadius, setBorderRadius] = useState("12px");
@@ -12,9 +12,7 @@ export const ListPage = () => {
   const [datas, setdata] = useState([]);
   const [search, setSearch] = useState("");
   const [checkBoxValue, setCheckBoxValue] = useState("all");
-const Upcoming = useRef()
-const Active = useRef()
-const past= useRef()
+
   useEffect(() => {
     setBorderRadius("12px");
     let data = firebase.database().ref("/contest");
@@ -22,17 +20,13 @@ const past= useRef()
       const results = snapshot.val();
       setdata(results);
     });
-
-    console.log("state"+checkBoxValue);
   }, [search, checkBoxValue]);
 
   const searchHandler = (e) => {
     setSearch(e.target.value);
   };
 
-  const listPageFilterOption = document.querySelector(
-    ".listpage-filter-option"
-  );
+  const listPageFilterOption = document.querySelector(".listpage-filter-option");
 
   const showFilterHandler = () => {
     setShowFilterSection(!showFilterSection);
@@ -45,34 +39,46 @@ const past= useRef()
       }
     }
   };
-  const getContest = (data)=>{
-    // return new Date( moment(datas[data].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()>0? true :false; 
-     console.log(checkBoxValue);
-     console.log(checkBoxValue === 'Past');
-     if(checkBoxValue == 'All'){
+
+  const getContest = (data) => {
+    if (checkBoxValue == "All") {
       return true;
-     }
-     else if(checkBoxValue === 'Active'){
-         if(new Date( moment(datas[data].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()<=0&&new Date( moment(datas[data].enddate).format('MMMM D YYYY')).getTime()-new Date().getTime()>=0){
-          return true;
-         }
-         else return false;
-     }
-     else if(checkBoxValue === 'Past'){
-          if(new Date( moment(datas[data].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()<0){
-            return true;
-          }
-          else return false;
-     }
-     else if(checkBoxValue === 'Upcoming'){
-          if(new Date( moment(datas[data].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()>0){
-            return true;
-          }
-          else return false;
-     }
-     else
-     return false;
-  }
+    } else if (checkBoxValue === "Active") {
+      if (
+        new Date(
+          moment(datas[data].startdate).format("MMMM D YYYY")
+        ).getTime() -
+          new Date().getTime() <=
+          0 &&
+        new Date(moment(datas[data].enddate).format("MMMM D YYYY")).getTime() -
+          new Date().getTime() >=
+          0
+      ) {
+        return true;
+      } else return false;
+    } else if (checkBoxValue === "Past") {
+      if (
+        new Date(
+          moment(datas[data].startdate).format("MMMM D YYYY")
+        ).getTime() -
+          new Date().getTime() <
+        0
+      ) {
+        return true;
+      } else return false;
+    } else if (checkBoxValue === "Upcoming") {
+      if (
+        new Date(
+          moment(datas[data].startdate).format("MMMM D YYYY")
+        ).getTime() -
+          new Date().getTime() >
+        0
+      ) {
+        return true;
+      } else return false;
+    } else return false;
+  };
+
   const checkBoxHandler = (e) => {
     let selectedCheckBoxValue = e.target.value;
     let checkboxes = document.getElementsByName("check");
@@ -80,17 +86,11 @@ const past= useRef()
       if (item.value !== selectedCheckBoxValue) item.checked = false;
     });
 
-    // if(selectedCheckBoxValue === 'Upcoming'){
-    //   let d= Object.keys(datas).filter(getContest)
-    //  setdata(d);
-    // }
     if (selectedCheckBoxValue !== checkBoxValue) {
       setCheckBoxValue(selectedCheckBoxValue);
     } else {
       setCheckBoxValue("");
     }
-
-
   };
 
   return (
@@ -222,10 +222,11 @@ const past= useRef()
         </div>
         <div className="ListPage-cardsection">
           {Object.keys(datas)
-            .filter((val) =>
-              datas[val].challengename
-                .toLowerCase()
-                .includes(search.toLowerCase())&&(getContest(val))
+            .filter(
+              (val) =>
+                datas[val].challengename
+                  .toLowerCase()
+                  .includes(search.toLowerCase()) && getContest(val)
             )
             .map((val) => {
               return (
@@ -238,17 +239,26 @@ const past= useRef()
                     />
                   </div>
                   <div className="ListPage-card-second">
-                   {
-                    new Date( moment(datas[val].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()<=0&&new Date( moment(datas[val].enddate).format('MMMM D YYYY')).getTime()-new Date().getTime()>=0&& <p ref={Active}>Active</p>
-                    
-                  }{
-                    new Date( moment(datas[val].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()<0&& <p ref={past}>Past</p>
-
-                  }
-                  {
-                    new Date( moment(datas[val].startdate).format('MMMM D YYYY')).getTime()-new Date().getTime()>0&& <p ref={Upcoming} >Upcoming</p>
-
-                  }
+                    {new Date(
+                      moment(datas[val].startdate).format("MMMM D YYYY")
+                    ).getTime() -
+                      new Date().getTime() <=
+                      0 &&
+                      new Date(
+                        moment(datas[val].enddate).format("MMMM D YYYY")
+                      ).getTime() -
+                        new Date().getTime() >=
+                        0 && <p ref={Active}>Active</p>}
+                    {new Date(
+                      moment(datas[val].startdate).format("MMMM D YYYY")
+                    ).getTime() -
+                      new Date().getTime() <
+                      0 && <p ref={past}>Past</p>}
+                    {new Date(
+                      moment(datas[val].startdate).format("MMMM D YYYY")
+                    ).getTime() -
+                      new Date().getTime() >
+                      0 && <p ref={Upcoming}>Upcoming</p>}
                     {/* <p>Upcoming</p> */}
                     <h2>{datas[val].challengename}</h2>
                     <p>Starts in</p>

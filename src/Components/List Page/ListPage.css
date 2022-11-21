@@ -1,4 +1,4 @@
-.listpage-elements{
+.listpage-elements {
   position: relative;
 }
 .ListPage-searchsection {
@@ -28,8 +28,8 @@
   font-size: 20px;
   padding-left: 2rem;
 }
- 
-.listpage-filter>*{
+
+.listpage-filter > * {
   position: absolute;
   width: 166px;
   height: 50px;
@@ -46,7 +46,7 @@
   outline: none;
 }
 
-.listpage-filter-option{
+.listpage-filter-option {
   position: absolute;
   top: 200.2px;
   left: 1100px;
@@ -63,27 +63,25 @@
   padding-bottom: 1rem;
 }
 
-.listpage-filter-option>h3{
+.listpage-filter-option > h3 {
   line-height: 5px;
   font-size: 18px;
-  font-weight:500;
-color: #000000;
+  font-weight: 500;
+  color: #000000;
 }
 
-.listpage-filter-option>label{
+.listpage-filter-option > label {
   color: #858585;
   line-height: 12px;
   font-size: 15px;
   font-weight: 300;
 }
 
-.listpage-filter-option input[type='checkbox']{
+.listpage-filter-option input[type="checkbox"] {
   margin-right: 10px;
   width: 15px;
-  height:15px;
+  height: 15px;
 }
-
-
 
 .ListPage-searchsection > input[type="text"]::placeholder {
   font-style: normal;
@@ -97,36 +95,35 @@ color: #000000;
   padding-left: 25px;
 }
 
-.ListPage-cardsection{
+.ListPage-cardsection {
   background: #003145;
-    padding: 3rem 0rem;
-    display: flex;
-    flex-wrap: wrap;
-
+  padding: 3rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.ListPage-card{
+.ListPage-card {
   margin-left: 6.2rem;
   margin-bottom: 4rem;
-width: 320px;
-height: 433px;
-background: #FFFFFF;
-box-shadow: 0px 4px 43px rgba(0, 0, 0, 0.08);
-border-radius: 15px;
-overflow: hidden;
+  width: 320px;
+  height: 433px;
+  background: #ffffff;
+  box-shadow: 0px 4px 43px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.ListPage-card-first{
+.ListPage-card-first {
   height: 40%;
   width: 100%;
 }
 
-.ListPage-card-first>img{
+.ListPage-card-first > img {
   height: 100%;
   width: 100%;
 }
 
-.ListPage-card-second{
+.ListPage-card-second {
   margin-top: 0.2rem;
   display: flex;
   flex-direction: column;
@@ -135,24 +132,24 @@ overflow: hidden;
   line-height: 10px;
 }
 
-.ListPage-card-second>h2{
+.ListPage-card-second > h2 {
   line-height: 0px;
   margin-top: 0.8rem;
 }
 
-.ListPage-card-second>p:first-of-type{
+.ListPage-card-second > p:first-of-type {
   line-height: 0px;
-text-align: center;
-background: rgba(242, 201, 76, 0.25);
-border-radius: 5px;
-padding: 10px;
+  text-align: center;
+  background: rgba(242, 201, 76, 0.25);
+  border-radius: 5px;
+  padding: 10px;
 }
 
-.ListPage-card-second>p:last-of-type{
+.ListPage-card-second > p:last-of-type {
   font-weight: 600;
 }
 
-.ListPage-card-second>button{
+.ListPage-card-second > button {
   width: 180px;
   height: 42px;
   background: #44924c;
@@ -167,5 +164,3 @@ padding: 10px;
   border: 0px;
   cursor: pointer;
 }
-
-
