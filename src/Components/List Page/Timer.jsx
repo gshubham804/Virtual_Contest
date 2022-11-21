@@ -12,7 +12,7 @@ const Timer =(props)=>{
     let interval;
     const startTimer=()=>{
         const timeFormat = moment(props.data).format('MMMM D YYYY')
-        const countDownDate= new Date(timeFormat).getTime();  ;
+        const countDownDate= new Date(timeFormat).getTime();  
         console.log(timeFormat);
         interval=setInterval(()=>{
             const now = new Date().getTime();

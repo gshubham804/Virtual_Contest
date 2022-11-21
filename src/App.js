@@ -12,7 +12,7 @@ function App() {
     {/* <CommonPage/> */}
     <ListPage/> 
      {/* <Timer/> */}
-    {/* <CreateChallenges/> */}
+    <CreateChallenges/>
     </>
   );
 }

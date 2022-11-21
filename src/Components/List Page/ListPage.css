@@ -24,23 +24,66 @@
   background: #ffffff;
   font-family: "Poppins";
   font-style: normal;
+  outline: none;
+  font-size: 20px;
+  padding-left: 2rem;
 }
-
-.ListPage-searchsection > select {
+ 
+.listpage-filter>*{
   position: absolute;
-  width: 110px;
+  width: 166px;
   height: 50px;
   left: 1100px;
   top: 150px;
   background: #ffffff;
   border: 1px solid #eaeaea;
-  border-radius: 12px;
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
   font-family: "Poppins", sans-serif;
   color: #000000;
+  padding: 0 1rem;
+  outline: none;
 }
+
+.listpage-filter-option{
+  position: absolute;
+  top: 200.2px;
+  left: 1100px;
+  width: 148px;
+  background: #ffffff;
+  opacity: 0.9;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  color: #000000;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+
+.listpage-filter-option>h3{
+  line-height: 5px;
+  font-size: 18px;
+  font-weight:500;
+color: #000000;
+}
+
+.listpage-filter-option>label{
+  color: #858585;
+  line-height: 12px;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.listpage-filter-option input[type='checkbox']{
+  margin-right: 10px;
+  width: 15px;
+  height:15px;
+}
+
+
 
 .ListPage-searchsection > input[type="text"]::placeholder {
   font-style: normal;

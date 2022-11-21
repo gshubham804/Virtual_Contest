@@ -87,6 +87,7 @@ export default function CreateChallenges() {
             name="challengename"
             value={challengename}
             onChange={handleInputChange}
+            className="create-challenge-form-fileds"
           />
           <br />
           <label className="challenge-blanks">Start Date</label>
@@ -97,6 +98,7 @@ export default function CreateChallenges() {
             id=""
             value={startdate}
             onChange={handleInputChange}
+            className="create-challenge-form-fileds"
           />
           <br />
           <label className="CreateChallenges-blanks">End Date</label>
@@ -107,6 +109,7 @@ export default function CreateChallenges() {
             id=""
             value={enddate}
             onChange={handleInputChange}
+            className="create-challenge-form-fileds"
           />
           <br />
           <label className="CreateChallenges-blanks">Description</label>
@@ -118,6 +121,7 @@ export default function CreateChallenges() {
             rows="10"
             value={description}
             onChange={handleInputChange}
+            className="create-challenge-form-fileds"
           ></textarea>
           <br />
           <label className="CreateChallenges-blanks">Image</label>
@@ -129,15 +133,17 @@ export default function CreateChallenges() {
             value={img}
             accept="image/*"
             onChange={handleInputChange}
+            className="create-challenge-form-fileds"
           />{" "}
           <p>{percent}% Done</p>
           <br />
           <label className="CreateChallenges-blanks">Level Type</label>
           <br />
-          <select name="level" id="" value={level} onChange={handleInputChange}>
-            <option>Easy</option>
-            <option>Medium</option>
-            <option>Hard</option>
+            
+          <select name="level" id="" value={level} onChange={handleInputChange} className="create-challenge-form-select">
+            <option className="create-challenge-options">Easy</option>
+            <option className="create-challenge-options">Medium</option>
+            <option className="create-challenge-options">Hard</option>
           </select>
           <br />
           <button className="CreateChallenges-btn">Create Challenge</button>

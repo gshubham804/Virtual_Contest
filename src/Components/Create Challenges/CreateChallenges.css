@@ -22,9 +22,7 @@ label {
   line-height: 60px;
 }
 
-input,
-textarea,
-select {
+.create-challenge-form-fileds, .create-challenge-form-select{
   width: 453px;
   height: 39px;
   border: 1px solid #b7b7b7;
@@ -46,13 +44,13 @@ input[type="file"]{
 padding-top: 1rem;
 }
 
-select {
+.create-challenge-form-select {
   width: 236px;
   height: 39px;
   margin-bottom: 2rem;
 }
 
-option {
+.create-challenge-options{
   font-family: "Poppins", sans-serif;
   text-align: start;
 }
