@@ -7,7 +7,7 @@ import Timer from "./Timer";
 import moment from "moment";
 import { IoIosArrowDown } from "react-icons/io";
 
-export const ListPage = () => {
+export const ListPage = ({setChildData}) => {
   const [borderRadius, setBorderRadius] = useState("12px");
   const [showFilterSection, setShowFilterSection] = useState(false);
   const [datas, setdata] = useState([]);
@@ -46,7 +46,37 @@ export const ListPage = () => {
   const getContest = (data) => {
     if (checkBoxValue == "All" || checkBoxValue == "") {
       return true;
-    } else if (checkBoxValue === "Active") {
+    }
+    else if(checkBoxValue==="Easy")
+    {
+      if(datas[data].level==="Easy")
+      {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    else if(checkBoxValue==="Medium")
+    {
+      if(datas[data].level==="Medium")
+      {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }else if(checkBoxValue==="Hard")
+    {
+      if(datas[data].level==="Hard")
+      {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+     else if (checkBoxValue === "Active") {
       if (
         new Date(
           moment(datas[data].startdate).format("MMMM D YYYY")
@@ -79,7 +109,8 @@ export const ListPage = () => {
       ) {
         return true;
       } else return false;
-    } else return false;
+    }
+     else return false;
   };
 
   const checkBoxHandler = (e) => {
@@ -222,7 +253,8 @@ export const ListPage = () => {
           )
           .map((val) => {
             return (
-              <div className="ListPage-card">
+              <div className="ListPage-card"
+              onClick={()=>{setChildData(datas[val])}}>
                 <div className="ListPage-card-first">
                   <img
                     src="https://ece.engin.umich.edu/wp-content/uploads/sites/2/2022/02/JoyofCoding-featured.jpg"

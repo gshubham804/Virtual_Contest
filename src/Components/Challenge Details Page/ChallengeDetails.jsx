@@ -2,22 +2,31 @@ import { React } from "react";
 import "./ChallengeDetails.css";
 import { ImStatsBars2 } from "react-icons/im";
 import { MdTimer } from "react-icons/md";
+import moment from "moment";
+import firebase from "firebase/compat/app";
 
+const ChallengeDetails = (props) => {
+    const editHandler=()=>{
 
-const ChallengeDetails = () => {
+    }
+
+    const deleteHandler=()=>{
+
+    }
+
   return (
     <>
       <div className="challengeDetails-main">
         <div className="challengeDetails-first-div">
           <div className="challengeDetails-timer">
             <MdTimer className="timer-icon" />
-            <h4>Starts on 17th Jun'22 09:00 PM (Indian Standard Time)</h4>
+            <h4>Starts on {moment(props.data.startdate).format("MMM Do YY")} 09:00 PM (Indian Standard Time)</h4>
           </div>
-          <h1>Data Sprint 72 - Butterfly Identification</h1>
-          <p>Identify the class to which each butterfly belongs to</p>
+          <h1>{props.data.challengename}</h1>
+          <p>{props.data.description}</p>
           <button>
             <ImStatsBars2 className="level-icon" />
-            Easy
+            {props.data.level}
           </button>
         </div>
         <div className="challengeDetails-second-div">
@@ -26,8 +35,8 @@ const ChallengeDetails = () => {
               <h2>Overview</h2>
             </div>
             <div className="challengeDetails-second-first-second-box">
-              <button className="challengeDetails-button-second">Edit</button>
-              <button className="challengeDetails-button-third">Delete</button>
+              <button onClick={editHandler} className="challengeDetails-button-second">Edit</button>
+              <button onClick={deleteHandler} className="challengeDetails-button-third">Delete</button>
             </div>
           </div>
           <div className="challengeDetails-second-second-section">
