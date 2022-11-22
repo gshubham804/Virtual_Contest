@@ -5,7 +5,7 @@ import "./ListPage.css";
 import { useState, useRef } from "react";
 import Timer from "./Timer";
 import moment from "moment";
-import {IoIosArrowDown}  from 'react-icons/io'
+import { IoIosArrowDown } from "react-icons/io";
 
 export const ListPage = () => {
   const [borderRadius, setBorderRadius] = useState("12px");
@@ -13,9 +13,6 @@ export const ListPage = () => {
   const [datas, setdata] = useState([]);
   const [search, setSearch] = useState("");
   const [checkBoxValue, setCheckBoxValue] = useState("All");
-  const Upcoming = useRef();
-  const Active = useRef();
-  const past = useRef();
 
   useEffect(() => {
     let data = firebase.database().ref("/contest");
@@ -29,17 +26,10 @@ export const ListPage = () => {
     setSearch(e.target.value);
   };
 
-  const listpageFilter = document.querySelector(".listpage-filter");
   const listPageFilterOption = document.querySelector(
     ".listpage-filter-option"
   );
   const listpageIcon = document.querySelector(".listpage-icon");
-  document.addEventListener("click",function(event){
-    if(event.target.closest(".listpage-filter-option")){
-      console.log(event.target.closest);
-    }
-    listpageFilter.classList.add('js-is.hidden');
-  })
 
   const showFilterHandler = () => {
     listpageIcon.classList.add("dropdown-rotate");
@@ -47,15 +37,14 @@ export const ListPage = () => {
     setBorderRadius("12px");
     if (showFilterSection) {
       listPageFilterOption.style.display = "block";
-    }
-    else{
-    listpageIcon.classList.remove("dropdown-rotate");
-    setBorderRadius("0px");
+    } else {
+      listpageIcon.classList.remove("dropdown-rotate");
+      setBorderRadius("0px");
     }
   };
 
   const getContest = (data) => {
-    if (checkBoxValue == "All" || checkBoxValue=='') {
+    if (checkBoxValue == "All" || checkBoxValue == "") {
       return true;
     } else if (checkBoxValue === "Active") {
       if (
@@ -108,176 +97,172 @@ export const ListPage = () => {
   };
 
   return (
-    <>
-      <div className="ListPage-main">
-        <div className="listpage-elements">
-          <div className="ListPage-searchsection">
-            <h2>Explore Challenges</h2>
-            <input
-              className="search-bar-on-click"
-              type="text"
-              placeholder="Search"
-              onChange={searchHandler}
-            />
-            <div
-              class="listpage-filter"
-              style={{
-                borderTopLeftRadius: "12px",
-                borderTopRightRadius: "12px",
-                borderBottomLeftRadius: borderRadius,
-                borderBottomRightRadius: borderRadius,
-              }}
-              onClick={showFilterHandler}
-            >
-                <h3 value="Filter">
-                  Filter
-                </h3>
-                <IoIosArrowDown className="listpage-icon dropdown-rotate"/>
-            </div>
-            {showFilterSection && (
-              <div class="listpage-filter-option">
-                <h3>Status</h3>
-                <label for="">
-                  {" "}
-                  <input
-                    name="check"
-                    type="checkbox"
-                    id="one"
-                    value="All"
-                    onChange={checkBoxHandler}
-                  />
-                  All
-                </label>
-                <br />
-                <label for="">
-                  {" "}
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="two"
-                    value="Active"
-                    onChange={checkBoxHandler}
-                  />
-                  Active
-                </label>
-                <br />
-                <label for="">
-                  {" "}
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="three"
-                    value="Upcoming"
-                    onChange={checkBoxHandler}
-                  />
-                  Upcoming
-                </label>
-                <br />
-                <label for="">
-                  {" "}
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="four"
-                    value="Past"
-                    onChange={checkBoxHandler}
-                  />
-                  Past
-                </label>
-                <br />
-                <h3>Level</h3>
-                <label for="">
-                  {" "}
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="five"
-                    value="Easy"
-                    onChange={checkBoxHandler}
-                  />
-                  Easy
-                </label>
-                <br />
-                <label for="">
-                  {" "}
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="six"
-                    value="Medium"
-                    onChange={checkBoxHandler}
-                  />
-                  Medium
-                </label>
-                <br />
-                <label for="">
-                  {" "}
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="seven"
-                    value="Hard"
-                    onChange={checkBoxHandler}
-                  />
-                  Hard
-                </label>
-                <br />
-              </div>
-            )}
+    <div className="ListPage-main">
+      <div className="listpage-elements">
+        <div className="ListPage-searchsection">
+          <h2>Explore Challenges</h2>
+          <input
+            className="search-bar-on-click"
+            type="text"
+            placeholder="Search"
+            onChange={searchHandler}
+          />
+          <div
+            class="listpage-filter"
+            style={{
+              borderTopLeftRadius: "12px",
+              borderTopRightRadius: "12px",
+              borderBottomLeftRadius: borderRadius,
+              borderBottomRightRadius: borderRadius,
+            }}
+            onClick={showFilterHandler}
+          >
+            <h3 value="Filter">Filter</h3>
+            <IoIosArrowDown className="listpage-icon dropdown-rotate" />
           </div>
-        </div>
-        <div className="ListPage-cardsection">
-          {Object.keys(datas)
-            .filter(
-              (val) =>
-                datas[val].challengename
-                  .toLowerCase()
-                  .includes(search.toLowerCase()) && getContest(val)
-            )
-            .map((val) => {
-              return (
-                <div className="ListPage-card">
-                  <div className="ListPage-card-first">
-                    <img
-                      src="https://ece.engin.umich.edu/wp-content/uploads/sites/2/2022/02/JoyofCoding-featured.jpg"
-                      alt=""
-                      srcset=""
-                    />
-                  </div>
-                  <div className="ListPage-card-second">
-                    {new Date(
-                      moment(datas[val].startdate).format("MMMM D YYYY")
-                    ).getTime() -
-                      new Date().getTime() <=
-                      0 &&
-                      new Date(
-                        moment(datas[val].enddate).format("MMMM D YYYY")
-                      ).getTime() -
-                        new Date().getTime() >=
-                        0 && <p ref={Active}>Active</p>}
-                    {new Date(
-                      moment(datas[val].startdate).format("MMMM D YYYY")
-                    ).getTime() -
-                      new Date().getTime() <
-                      0 && <p ref={past}>Past</p>}
-                    {new Date(
-                      moment(datas[val].startdate).format("MMMM D YYYY")
-                    ).getTime() -
-                      new Date().getTime() >
-                      0 && <p ref={Upcoming}>Upcoming</p>}
-                    {/* <p>Upcoming</p> */}
-                    <h2>{datas[val].challengename}</h2>
-                    <p>Starts in</p>
-                    <div className="listpage-timer">
-                      <Timer data={datas[val].startdate} />
-                    </div>
-                    <button>Participate Now</button>
-                  </div>
-                </div>
-              );
-            })}
+          {showFilterSection && (
+            <div class="listpage-filter-option">
+              <h3>Status</h3>
+              <label for="">
+                {" "}
+                <input
+                  name="check"
+                  type="checkbox"
+                  id="one"
+                  value="All"
+                  onChange={checkBoxHandler}
+                />
+                All
+              </label>
+              <br />
+              <label for="">
+                {" "}
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="two"
+                  value="Active"
+                  onChange={checkBoxHandler}
+                />
+                Active
+              </label>
+              <br />
+              <label for="">
+                {" "}
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="three"
+                  value="Upcoming"
+                  onChange={checkBoxHandler}
+                />
+                Upcoming
+              </label>
+              <br />
+              <label for="">
+                {" "}
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="four"
+                  value="Past"
+                  onChange={checkBoxHandler}
+                />
+                Past
+              </label>
+              <br />
+              <h3>Level</h3>
+              <label for="">
+                {" "}
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="five"
+                  value="Easy"
+                  onChange={checkBoxHandler}
+                />
+                Easy
+              </label>
+              <br />
+              <label for="">
+                {" "}
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="six"
+                  value="Medium"
+                  onChange={checkBoxHandler}
+                />
+                Medium
+              </label>
+              <br />
+              <label for="">
+                {" "}
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="seven"
+                  value="Hard"
+                  onChange={checkBoxHandler}
+                />
+                Hard
+              </label>
+              <br />
+            </div>
+          )}
         </div>
       </div>
-    </>
+      <div className="ListPage-cardsection">
+        {Object.keys(datas)
+          .filter(
+            (val) =>
+              datas[val].challengename
+                .toLowerCase()
+                .includes(search.toLowerCase()) && getContest(val)
+          )
+          .map((val) => {
+            return (
+              <div className="ListPage-card">
+                <div className="ListPage-card-first">
+                  <img
+                    src="https://ece.engin.umich.edu/wp-content/uploads/sites/2/2022/02/JoyofCoding-featured.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div className="ListPage-card-second">
+                  {new Date(
+                    moment(datas[val].startdate).format("MMMM D YYYY")
+                  ).getTime() -
+                    new Date().getTime() <=
+                    0 &&
+                    new Date(
+                      moment(datas[val].enddate).format("MMMM D YYYY")
+                    ).getTime() -
+                      new Date().getTime() >=
+                      0 && <p>Active</p>}
+                  {new Date(
+                    moment(datas[val].startdate).format("MMMM D YYYY")
+                  ).getTime() -
+                    new Date().getTime() <
+                    0 && <p>Past</p>}
+                  {new Date(
+                    moment(datas[val].startdate).format("MMMM D YYYY")
+                  ).getTime() -
+                    new Date().getTime() >
+                    0 && <p>Upcoming</p>}
+                  {/* <p>Upcoming</p> */}
+                  <h2>{datas[val].challengename}</h2>
+                  <p>Starts in</p>
+                  <div className="listpage-timer">
+                    <Timer data={datas[val].startdate} />
+                  </div>
+                  <button>Participate Now</button>
+                </div>
+              </div>
+            );
+          })}
+      </div>
+    </div>
   );
 };
