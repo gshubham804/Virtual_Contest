@@ -5,16 +5,19 @@ import "./ListPage.css";
 import { useState, useRef } from "react";
 import Timer from "./Timer";
 import moment from "moment";
+import {IoIosArrowDown}  from 'react-icons/io'
 
 export const ListPage = () => {
   const [borderRadius, setBorderRadius] = useState("12px");
   const [showFilterSection, setShowFilterSection] = useState(false);
   const [datas, setdata] = useState([]);
   const [search, setSearch] = useState("");
-  const [checkBoxValue, setCheckBoxValue] = useState("all");
+  const [checkBoxValue, setCheckBoxValue] = useState("All");
+  const Upcoming = useRef();
+  const Active = useRef();
+  const past = useRef();
 
   useEffect(() => {
-    setBorderRadius("12px");
     let data = firebase.database().ref("/contest");
     data.on("value", (snapshot) => {
       const results = snapshot.val();
@@ -26,22 +29,33 @@ export const ListPage = () => {
     setSearch(e.target.value);
   };
 
-  const listPageFilterOption = document.querySelector(".listpage-filter-option");
+  const listpageFilter = document.querySelector(".listpage-filter");
+  const listPageFilterOption = document.querySelector(
+    ".listpage-filter-option"
+  );
+  const listpageIcon = document.querySelector(".listpage-icon");
+  document.addEventListener("click",function(event){
+    if(event.target.closest(".listpage-filter-option")){
+      console.log(event.target.closest);
+    }
+    listpageFilter.classList.add('js-is.hidden');
+  })
 
   const showFilterHandler = () => {
+    listpageIcon.classList.add("dropdown-rotate");
     setShowFilterSection(!showFilterSection);
+    setBorderRadius("12px");
     if (showFilterSection) {
       listPageFilterOption.style.display = "block";
-      if (borderRadius === "0px") {
-        setBorderRadius("12px");
-      } else {
-        setBorderRadius("0px");
-      }
+    }
+    else{
+    listpageIcon.classList.remove("dropdown-rotate");
+    setBorderRadius("0px");
     }
   };
 
   const getContest = (data) => {
-    if (checkBoxValue == "All") {
+    if (checkBoxValue == "All" || checkBoxValue=='') {
       return true;
     } else if (checkBoxValue === "Active") {
       if (
@@ -113,20 +127,12 @@ export const ListPage = () => {
                 borderBottomLeftRadius: borderRadius,
                 borderBottomRightRadius: borderRadius,
               }}
+              onClick={showFilterHandler}
             >
-              <select
-                onClick={showFilterHandler}
-                style={{
-                  borderTopLeftRadius: "12px",
-                  borderTopRightRadius: "12px",
-                  borderBottomLeftRadius: borderRadius,
-                  borderBottomRightRadius: borderRadius,
-                }}
-              >
-                <option value="Filter" hidden>
+                <h3 value="Filter">
                   Filter
-                </option>
-              </select>
+                </h3>
+                <IoIosArrowDown className="listpage-icon dropdown-rotate"/>
             </div>
             {showFilterSection && (
               <div class="listpage-filter-option">

@@ -29,21 +29,33 @@
   padding-left: 2rem;
 }
 
-.listpage-filter > * {
+.listpage-filter {
   position: absolute;
-  width: 166px;
+  width: 132px;
   height: 50px;
   left: 1100px;
   top: 150px;
   background: #ffffff;
   border: 1px solid #eaeaea;
-  font-weight: 400;
   font-size: 18px;
-  line-height: 26px;
+  line-height: 10px;
   font-family: "Poppins", sans-serif;
   color: #000000;
   padding: 0 1rem;
   outline: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.js-is.hidden{
+  display: none;
+}
+
+.dropdown-rotate{
+  transform: rotate(180deg);
+  /* transition: all .7s  ease-in-out; */
 }
 
 .listpage-filter-option {
