@@ -4,6 +4,7 @@ import { ImStatsBars2 } from "react-icons/im";
 import { MdTimer } from "react-icons/md";
 import moment from "moment";
 import firebase from "firebase/compat/app";
+import {Link} from 'react-router-dom'
 
 const ChallengeDetails = (props) => {
     const editHandler=()=>{
@@ -35,7 +36,7 @@ const ChallengeDetails = (props) => {
               <h2>Overview</h2>
             </div>
             <div className="challengeDetails-second-first-second-box">
-              <button onClick={editHandler} className="challengeDetails-button-second">Edit</button>
+             <button onClick={editHandler} className="challengeDetails-button-second"><Link to="/edit" style={{color: '#FFF',textDecoration:'none' }}>Edit</Link></button>
               <button onClick={deleteHandler} className="challengeDetails-button-third">Delete</button>
             </div>
           </div>

@@ -69,14 +69,14 @@ input[type="text"] {
 }
 
 .EditChallenges-btn {
-  width: 214px;
+  width: 100px;
   height: 46px;
   background: #44924c;
   border-radius: 10px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 21px;
   text-align: center;
   color: #ffffff;

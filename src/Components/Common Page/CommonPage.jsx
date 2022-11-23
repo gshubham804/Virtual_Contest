@@ -1,5 +1,6 @@
 import React from 'react'
 import "./CommonPage.css"
+import {Link} from 'react-router-dom'
 
 export default function CommonPage() {
   return (
@@ -11,7 +12,8 @@ export default function CommonPage() {
                 great place to put your AI/Data Science skills to test
                 on diverse datasets allowing you to foster learning
                 through competitions.</h3>
-    <button className='CommonPage-main-first-btn'>Create Challenge</button>
+    <button className='CommonPage-main-first-btn'><Link to="/createchallenge" style={{color:'black',textDecoration:'none' }}>
+Create Challenge</Link></button>
     <img src="https://dphi.tech/static/images/challenges/challenges_hero.png" alt=""/>
         </div>
         <div className="CommonPage-main-second"></div>

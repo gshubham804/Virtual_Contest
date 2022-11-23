@@ -18,11 +18,11 @@ export default function EditChallenges(props) {
 
       console.log(initialState)
     
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState([initialState]);
   console.log(state)
   const [percent, setPercent] = useState("0");
   const { challengename, startdate, enddate, description, img, level } = state;
-  console.log(state);
+  console.log(state[0].challengename);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState((state) => ({
@@ -90,19 +90,19 @@ export default function EditChallenges(props) {
           <input
             type="text"
             name="challengename"
-            // defaultValue={props.data.challengename}
+            defaultValue={state[0].challengename}
             value={challengename}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
             />
           <br />
-          <label className="challenge-blanks">Start Date</label>
+          <label className="EditChallenges-blanks">Start Date</label>
           <br />
           <input
             type="date"
             name="startdate"
             id=""
-            // defaultValue={props.data.startdate}
+            defaultValue={state[0].startdate}
             value={startdate}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
@@ -114,7 +114,7 @@ export default function EditChallenges(props) {
             type="date"
             name="enddate"
             id=""
-            // defaultValue={props.data.enddate}
+            defaultValue={state[0].enddate}
             value={enddate}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
@@ -127,7 +127,7 @@ export default function EditChallenges(props) {
             id=""
             cols="30"
             rows="10"
-            // defaultValue={props.data.description}
+            defaultValue={state[0].description}
             value={description}
             onChange={handleInputChange}
           ></textarea>
@@ -136,7 +136,7 @@ export default function EditChallenges(props) {
           <br />
           <div className="image-preview">
             <img
-            //  defaultValue={props.data.img} 
+             defaultValue={state[0].img} 
              src=""/>
           </div>
           <input
@@ -154,14 +154,14 @@ export default function EditChallenges(props) {
           <br />
             
           <select name="level" id=""
-        //    defaultValue={props.data.level}
+           defaultValue={state[0].level}
             value={level} onChange={handleInputChange} className="create-challenge-form-select">
             <option className="edit-challenge-options">Easy</option>
             <option className="edit-challenge-options">Medium</option>
             <option className="edit-challenge-options">Hard</option>
           </select>
           <br />
-          <button className="EditChallenges-btn">Create Challenge</button>
+          <button className="EditChallenges-btn">Save</button>
         </form>
       </div>
     </>

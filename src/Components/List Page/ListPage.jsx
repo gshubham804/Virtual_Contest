@@ -6,6 +6,8 @@ import { useState, useRef } from "react";
 import Timer from "./Timer";
 import moment from "moment";
 import { IoIosArrowDown } from "react-icons/io";
+import CommonPage from '../Common Page/CommonPage';
+import {Link} from 'react-router-dom'
 
 export const ListPage = ({ setChildData }) => {
   const [borderRadius, setBorderRadius] = useState("12px");
@@ -115,6 +117,8 @@ export const ListPage = ({ setChildData }) => {
   };
 
   return (
+    <>
+    <CommonPage/>
     <div className="ListPage-main">
       <div className="listpage-elements">
         <div className="ListPage-searchsection">
@@ -230,6 +234,7 @@ export const ListPage = ({ setChildData }) => {
           )}
         </div>
       </div>
+      <Link to="/challengedetails" style={{ color: 'black',textDecoration:'none' }}>
       <div className="ListPage-cardsection">
         {Object.keys(datas)
           .filter(
@@ -286,7 +291,9 @@ export const ListPage = ({ setChildData }) => {
             );
           })}
       </div>
+      </Link>
     </div>
+    </>
   );
 };
  

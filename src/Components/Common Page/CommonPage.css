@@ -43,6 +43,7 @@
     text-align: center;
     color: #003145;
     cursor: pointer;
+    border-color: transparent;
   }
   
   .CommonPage-main-first > img {
