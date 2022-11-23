@@ -121,11 +121,14 @@ export default function CreateChallenges() {
             rows="10"
             value={description}
             onChange={handleInputChange}
-            className="create-challenge-form-fileds"
+            // className="create-challenge-form-fileds"
           ></textarea>
           <br />
           <label className="CreateChallenges-blanks">Image</label>
           <br />
+          <div className="image-preview">
+            <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" srcset="" />
+          </div>
           <input
             type="file"
             name="img"

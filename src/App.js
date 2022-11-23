@@ -5,13 +5,15 @@ import CreateChallenges from './Components/Create Challenges/CreateChallenges';
 import { ListPage } from './Components/List Page/ListPage';
 import Navbar from './Components/Navbar/Navbar';
 import React, { useState } from "react";
+import EditChallenges from './Components/Edit Challenges Details/EditChallenges';
 
 function App() {
   const [childData, setChildData] = useState("");
   return (
     <>
-    <Navbar/> 
-    <CommonPage/>
+    <EditChallenges data={childData}/>
+    {/* <Navbar/>  */}
+    {/* <CommonPage/> */}
     <ListPage setChildData={setChildData}/> 
     <ChallengeDetails data={childData} />
     {/* <CreateChallenges/> */}
