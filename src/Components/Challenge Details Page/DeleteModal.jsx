@@ -7,7 +7,7 @@ const DeleteModal = () => {
   const [cancel, setCancel] = useState(false);
   const cancelHandler = () => {
     setCancel(!cancel);
-    document.body.style.opacity = '1'
+    document.body.style.opacity = 1;
 
   };
 

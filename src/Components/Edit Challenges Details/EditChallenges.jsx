@@ -7,7 +7,6 @@ import { v4 as uuidv4} from 'uuid'
 
 
 export default function EditChallenges(props) {
-  console.log(props.data.uid);
     const initialState = {
         challengename:props.data.challengename,
         startdate: props.data.startdate,
@@ -27,20 +26,21 @@ export default function EditChallenges(props) {
       [name]: value,
     }));
   };
-
+  let i= firedb
+  .database()
+  .ref("contest/")
+  .child(`${props.data.uid}`)
+  console.log(i);
   const handleGenerate = (e) => {
     e.preventDefault();
-    firedb
-    .database()
-    .ref("contest/")
-    .child(props.data.uid)
-      .update(state, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Details edited successfully");
-        }
-      });
+  
+      // .update(state, (err) => {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log("Details edited successfully");
+      //   }
+      // });
 
     if (!img) {
       alert("Please choose a file first!");
