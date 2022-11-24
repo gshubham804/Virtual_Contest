@@ -218,40 +218,40 @@
 @media only screen and (max-width: 768px) and (min-width: 481px)  {
   .ListPage-searchsection {
     padding-top: 1rem;
-    padding-bottom: 18rem;
+    padding-bottom: 22rem;
     background: rgb(0, 42, 59);
     color: #fff;
   }
 
   .ListPage-searchsection > h2 {
     position: absolute;
-    left: 75px;
+    left: 165px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .ListPage-searchsection > input[type="text"] {
-    width: 329px;
+    width: 529px;
     height: 50px;
-    left: 36px;
-    top: 120px;
+    left: 115px;
+    top: 150px;
   }
 
   .listpage-filter {
     position: absolute;
-    left: 135px;
-    top: 200px;
+    left: 295px;
+    top: 230px;
   }
 
   .listpage-filter-option {
     position: absolute;
-    top: 241px;
-    left: 135px;
+    top: 280.5px;
+    left: 295px;
   }
 
   .ListPage-card {
     margin-left: 2.8rem;
-    width: 350px;
+    width: 320px;
   }
 }
 
