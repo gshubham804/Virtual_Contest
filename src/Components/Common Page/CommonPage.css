@@ -135,3 +135,47 @@
       top: 530px;
     } 
   }
+
+  @media only screen and (max-width: 1024px) and (min-width: 769px){
+    .CommonPage-main {
+      height: 78vh;
+    }
+    
+    .CommonPage-main-first {
+      padding-top: 1rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      height: 100%;
+    }
+    
+    .CommonPage-main-first > h1 {
+      width: 100%;
+      font-weight: 600;
+      font-size: 45px;
+      line-height: 55px;
+      padding-bottom: 0rem;
+    }
+    
+    .CommonPage-main-first > h3 {
+      width: 100%;
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 35px;
+      padding-bottom: 3rem;
+      text-align: justify;
+    }
+    
+    .CommonPage-main-first-btn {
+      width: 222px;
+      height: 70px;
+      font-size: 24px;
+    }
+    
+    .CommonPage-main-first > img {
+      position: absolute;
+      width: 380px;
+      height: 384px;
+      left: 550px;
+      top: 500px;
+    } 
+  }
