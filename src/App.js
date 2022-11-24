@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar';
 import React, { useState } from "react";
 import EditChallenges from './Components/Edit Challenges Details/EditChallenges';
 import { BrowserRouter as Router, Routes, Route  } from "react-router-dom";
+import DeleteModal from './Components/Challenge Details Page/DeleteModal';
 
 function App() {
   const [childData, setChildData] = useState("");

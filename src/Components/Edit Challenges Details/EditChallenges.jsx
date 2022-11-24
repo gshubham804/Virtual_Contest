@@ -7,6 +7,7 @@ import { v4 as uuidv4} from 'uuid'
 
 
 export default function EditChallenges(props) {
+  console.log(props.data.uid);
     const initialState = {
         challengename:props.data.challengename,
         startdate: props.data.startdate,
@@ -16,13 +17,9 @@ export default function EditChallenges(props) {
         level:props.data.level,
       };
 
-      console.log(initialState)
-    
   const [state, setState] = useState([initialState]);
-  console.log(state)
   const [percent, setPercent] = useState("0");
   const { challengename, startdate, enddate, description, img, level } = state;
-  console.log(state[0].challengename);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState((state) => ({
@@ -34,14 +31,14 @@ export default function EditChallenges(props) {
   const handleGenerate = (e) => {
     e.preventDefault();
     firedb
-      .database()
-      .ref()
-      .child("contest")
-      .push(state, (err) => {
+    .database()
+    .ref("contest/")
+    .child(props.data.uid)
+      .update(state, (err) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("Details submitted successfully");
+          console.log("Details edited successfully");
         }
       });
 
@@ -50,7 +47,6 @@ export default function EditChallenges(props) {
     }
 
     let filename = img.replace(/^.*[\\\/]/, "");
-    console.log(filename);
     const uid = uuidv4();
     const storageRef = ref(storage, `images/${uid}/${filename}`);
     const metadata = {

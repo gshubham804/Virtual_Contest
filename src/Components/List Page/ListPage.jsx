@@ -12,17 +12,23 @@ import {Link} from 'react-router-dom'
 export const ListPage = ({ setChildData }) => {
   const [borderRadius, setBorderRadius] = useState("12px");
   const [showFilterSection, setShowFilterSection] = useState(false);
-  const [datas, setdata] = useState([]);
+  const [datas, setdata] = useState({});
   const [search, setSearch] = useState("");
   const [checkBoxValue, setCheckBoxValue] = useState("All");
 
   useEffect(() => {
     let data = firebase.database().ref("/contest");
     data.on("value", (snapshot) => {
-      const results = snapshot.val();
-      setdata(results);
+      const results = snapshot.val(); 
+      let alldata=[];
+      for(let parentkey of Object.keys(results)){
+      let key = Object.keys(results[parentkey]);
+      let data = results[parentkey][key];
+      alldata.push(data);
+      }
+      setdata(alldata)
     });
-  }, [search, checkBoxValue]);
+  }, [search]);
 
   const searchHandler = (e) => {
     setSearch(e.target.value);

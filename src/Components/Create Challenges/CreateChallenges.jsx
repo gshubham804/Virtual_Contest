@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firedb, storage } from "../../firebase";
 import { v4 as uuidv4} from 'uuid'
+
+let uid = uuidv4();
 const initialState = {
   challengename: "",
   startdate: "",
@@ -11,12 +13,13 @@ const initialState = {
   description: "",
   img: "",
   level: "",
+  uid:uid,
 };
 
 export default function CreateChallenges() {
   const [state, setState] = useState(initialState);
   const [percent, setPercent] = useState("0");
-  const { challengename, startdate, enddate, description, img, level } = state;
+  const { challengename, startdate, enddate, description, img, level,uid } = state;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState((state) => ({
@@ -25,14 +28,12 @@ export default function CreateChallenges() {
     }));
   };
 
-  console.log(img);
-
   const handleGenerate = (e) => {
     e.preventDefault();
-    firedb
+   firedb
       .database()
       .ref()
-      .child("contest")
+      .child("contest/"+uid)
       .push(state, (err) => {
         if (err) {
           console.log(err);
@@ -41,13 +42,13 @@ export default function CreateChallenges() {
         }
       });
 
+      
+
     if (!img) {
       alert("Please choose a file first!");
     }
 
     let filename = img.replace(/^.*[\\\/]/, "");
-    console.log(filename);
-    const uid = uuidv4();
     const storageRef = ref(storage, `images/${uid}/${filename}`);
     const metadata = {
       contentType: 'image/png'

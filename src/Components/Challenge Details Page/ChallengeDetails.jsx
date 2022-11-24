@@ -5,13 +5,21 @@ import { MdTimer } from "react-icons/md";
 import moment from "moment";
 import firebase from "firebase/compat/app";
 import {Link} from 'react-router-dom'
+import DeleteModal from "./DeleteModal";
+import { useState } from "react";
 
 const ChallengeDetails = (props) => {
+  const[isOpen,setIsOpen]= useState(true);
     const editHandler=()=>{
 
     }
 
     const deleteHandler=()=>{
+      setIsOpen(!isOpen)
+      if(isOpen)
+      document.querySelector('.challengeDetails-main').style.opacity = '0.4'
+      else
+      document.querySelector('.challengeDetails-main').style.opacity = '1'
 
     }
 
@@ -88,6 +96,7 @@ const ChallengeDetails = (props) => {
           </div>
         </div>
       </div>
+      {!isOpen && <DeleteModal />}
     </>
   );
 };
