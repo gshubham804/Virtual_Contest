@@ -6,8 +6,8 @@ import { useState, useRef } from "react";
 import Timer from "./Timer";
 import moment from "moment";
 import { IoIosArrowDown } from "react-icons/io";
-import CommonPage from '../Common Page/CommonPage';
-import {Link} from 'react-router-dom'
+import CommonPage from "../Common Page/CommonPage";
+import { Link } from "react-router-dom";
 
 export const ListPage = ({ setChildData }) => {
   const [borderRadius, setBorderRadius] = useState("12px");
@@ -19,7 +19,7 @@ export const ListPage = ({ setChildData }) => {
   useEffect(() => {
     let data = firebase.database().ref("/contest");
     data.on("value", (snapshot) => {
-      const results = snapshot.val(); 
+      const results = snapshot.val();
       setdata(results);
       // let alldata=[];
       // for(let parentkey of Object.keys(results)){
@@ -125,185 +125,183 @@ export const ListPage = ({ setChildData }) => {
 
   return (
     <>
-    <CommonPage/>
-    <div className="ListPage-main">
-      <div className="listpage-elements">
-        <div className="ListPage-searchsection">
-          <h2>Explore Challenges</h2>
-          <input
-            className="search-bar-on-click"
-            type="text"
-            placeholder="Search"
-            onChange={searchHandler}
-          />
-          <div
-            class="listpage-filter"
-            style={{
-              borderTopLeftRadius: "12px",
-              borderTopRightRadius: "12px",
-              borderBottomLeftRadius: borderRadius,
-              borderBottomRightRadius: borderRadius,
-            }}
-            onClick={showFilterHandler}
-          >
-            <h3 value="Filter">Filter</h3>
-            <IoIosArrowDown className="listpage-icon dropdown-rotate" />
-          </div>
-          {showFilterSection && (
-            <div class="listpage-filter-option">
-              <h3>Status</h3>
-              <label for="">
-                {" "}
-                <input
-                  name="check"
-                  type="checkbox"
-                  id="one"
-                  value="All"
-                  onChange={checkBoxHandler}
-                />
-                All
-              </label>
-              <br />
-              <label for="">
-                {" "}
-                <input
-                  type="checkbox"
-                  name="check"
-                  id="two"
-                  value="Active"
-                  onChange={checkBoxHandler}
-                />
-                Active
-              </label>
-              <br />
-              <label for="">
-                {" "}
-                <input
-                  type="checkbox"
-                  name="check"
-                  id="three"
-                  value="Upcoming"
-                  onChange={checkBoxHandler}
-                />
-                Upcoming
-              </label>
-              <br />
-              <label for="">
-                {" "}
-                <input
-                  type="checkbox"
-                  name="check"
-                  id="four"
-                  value="Past"
-                  onChange={checkBoxHandler}
-                />
-                Past
-              </label>
-              <br />
-              <h3>Level</h3>
-              <label for="">
-                {" "}
-                <input
-                  type="checkbox"
-                  name="check"
-                  id="five"
-                  value="Easy"
-                  onChange={checkBoxHandler}
-                />
-                Easy
-              </label>
-              <br />
-              <label for="">
-                {" "}
-                <input
-                  type="checkbox"
-                  name="check"
-                  id="six"
-                  value="Medium"
-                  onChange={checkBoxHandler}
-                />
-                Medium
-              </label>
-              <br />
-              <label for="">
-                {" "}
-                <input
-                  type="checkbox"
-                  name="check"
-                  id="seven"
-                  value="Hard"
-                  onChange={checkBoxHandler}
-                />
-                Hard
-              </label>
-              <br />
+      <CommonPage />
+      <div className="ListPage-main">
+        <div className="listpage-elements">
+          <div className="ListPage-searchsection">
+            <h2>Explore Challenges</h2>
+            <input
+              className="search-bar-on-click"
+              type="text"
+              placeholder="Search"
+              onChange={searchHandler}
+            />
+            <div
+              class="listpage-filter"
+              style={{
+                borderTopLeftRadius: "12px",
+                borderTopRightRadius: "12px",
+                borderBottomLeftRadius: borderRadius,
+                borderBottomRightRadius: borderRadius,
+              }}
+              onClick={showFilterHandler}
+            >
+              <h3 value="Filter">Filter</h3>
+              <IoIosArrowDown className="listpage-icon dropdown-rotate" />
             </div>
-          )}
+            {showFilterSection && (
+              <div class="listpage-filter-option">
+                <h3>Status</h3>
+                <label for="">
+                  {" "}
+                  <input
+                    name="check"
+                    type="checkbox"
+                    id="one"
+                    value="All"
+                    onChange={checkBoxHandler}
+                  />
+                  All
+                </label>
+                <br />
+                <label for="">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="two"
+                    value="Active"
+                    onChange={checkBoxHandler}
+                  />
+                  Active
+                </label>
+                <br />
+                <label for="">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="three"
+                    value="Upcoming"
+                    onChange={checkBoxHandler}
+                  />
+                  Upcoming
+                </label>
+                <br />
+                <label for="">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="four"
+                    value="Past"
+                    onChange={checkBoxHandler}
+                  />
+                  Past
+                </label>
+                <br />
+                <h3>Level</h3>
+                <label for="">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="five"
+                    value="Easy"
+                    onChange={checkBoxHandler}
+                  />
+                  Easy
+                </label>
+                <br />
+                <label for="">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="six"
+                    value="Medium"
+                    onChange={checkBoxHandler}
+                  />
+                  Medium
+                </label>
+                <br />
+                <label for="">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="seven"
+                    value="Hard"
+                    onChange={checkBoxHandler}
+                  />
+                  Hard
+                </label>
+                <br />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      <Link to="/challengedetails" style={{ color: 'black',textDecoration:'none' }}>
-      <div className="ListPage-cardsection">
-        {/* {
+        <Link
+          to="/challengedetails"
+          style={{ color: "black", textDecoration: "none" }}
+        >
+          <div className="ListPage-cardsection">
+            {/* {
           console.log(Object.keys(datas))
         } */}
-        {Object.keys(datas)
-          .filter(
-            (val) =>
-              datas[val].challengename
-                .toLowerCase()
-                .includes(search.toLowerCase()) && getContest(val)
-          )
-          .map((val) => {
-            return (
-              <div
-                className="ListPage-card"
-                onClick={() => {
-                  setChildData({...datas[val] , key:val});
-                }}
-              >
-                <div className="ListPage-card-first">
-                  <img
-                    src="https://ece.engin.umich.edu/wp-content/uploads/sites/2/2022/02/JoyofCoding-featured.jpg"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-                <div className="ListPage-card-second">
-                  {new Date(
-                    moment(datas[val].startdate).format("MMMM D YYYY")
-                  ).getTime() -
-                    new Date().getTime() <=
-                    0 &&
-                    new Date(
-                      moment(datas[val].enddate).format("MMMM D YYYY")
-                    ).getTime() -
-                      new Date().getTime() >=
-                      0 && <p>Active</p>}
-                  {new Date(
-                    moment(datas[val].startdate).format("MMMM D YYYY")
-                  ).getTime() -
-                    new Date().getTime() <
-                    0 && <p>Past</p>}
-                  {new Date(
-                    moment(datas[val].startdate).format("MMMM D YYYY")
-                  ).getTime() -
-                    new Date().getTime() >
-                    0 && <p>Upcoming</p>}
-                  {/* <p>Upcoming</p> */}
-                  <h2>{datas[val].challengename}</h2>
-                  <p>Starts in</p>
-                  <div className="listpage-timer">
-                    <Timer data={datas[val].startdate} />
+            {Object.keys(datas)
+              .filter(
+                (val) =>
+                  datas[val].challengename
+                    .toLowerCase()
+                    .includes(search.toLowerCase()) && getContest(val)
+              )
+              .map((val) => {
+                return (
+                  <div
+                    className="ListPage-card"
+                    onClick={() => {
+                      setChildData({ ...datas[val], key: val });
+                    }}
+                  >
+                    <div className="ListPage-card-first">
+                      <img src={datas[val].img} alt="" srcset="" />
+                    </div>
+                    <div className="ListPage-card-second">
+                      {new Date(
+                        moment(datas[val].startdate).format("MMMM D YYYY")
+                      ).getTime() -
+                        new Date().getTime() <=
+                        0 &&
+                        new Date(
+                          moment(datas[val].enddate).format("MMMM D YYYY")
+                        ).getTime() -
+                          new Date().getTime() >=
+                          0 && <p>Active</p>}
+                      {new Date(
+                        moment(datas[val].startdate).format("MMMM D YYYY")
+                      ).getTime() -
+                        new Date().getTime() <
+                        0 && <p>Past</p>}
+                      {new Date(
+                        moment(datas[val].startdate).format("MMMM D YYYY")
+                      ).getTime() -
+                        new Date().getTime() >
+                        0 && <p>Upcoming</p>}
+                      {/* <p>Upcoming</p> */}
+                      <h2>{datas[val].challengename}</h2>
+                      <p>Starts in</p>
+                      <div className="listpage-timer">
+                        <Timer data={datas[val].startdate} />
+                      </div>
+                      <button>Participate Now</button>
+                    </div>
                   </div>
-                  <button>Participate Now</button>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+          </div>
+        </Link>
       </div>
-      </Link>
-    </div>
     </>
   );
 };
- 

@@ -3,9 +3,7 @@ import "./CreateChallenges.css";
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firedb, storage } from "../../firebase";
-// import { v4 as uuidv4} from 'uuid'
 
-// let uid = uuidv4();
 const initialState = {
   challengename: "",
   startdate: "",
@@ -13,43 +11,28 @@ const initialState = {
   description: "",
   img: "",
   level: "",
-  // uid:uid,
 };
 
 export default function CreateChallenges() {
   const [state, setState] = useState(initialState);
-  const [percent, setPercent] = useState("0");
-  const[file,setFile] = useState();
+  const [progress, setProgress] = useState(0);
+  const [file, setFile] = useState();
   const { challengename, startdate, enddate, description, img, level } = state;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState((state) => ({
       ...state,
       [name]: value,
     }));
-  };
 
-  const fileHandleInput=(e)=>{
-    if(e.target.files[0]){
+    if (e.target.files[0]) {
       setFile(e.target.files[0]);
     }
-  }
+  };
 
   const handleGenerate = (e) => {
     e.preventDefault();
-   firedb
-      .database()
-      .ref('contest')
-      .push(state, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Details submitted successfully");
-        }
-      });
-
-      
-
     if (!file) {
       alert("Please choose a file first!");
       return;
@@ -58,30 +41,53 @@ export default function CreateChallenges() {
     let filename = img.replace(/^.*[\\\/]/, "");
     const storageRef = ref(storage, `images/${filename}`);
     const metadata = {
-      contentType: 'image/png'
+      contentType: "image/*",
     };
 
     const uploadTask = uploadBytesResumable(storageRef, file, metadata);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
+        // progress function
+        const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-
-        // update progress
-        setPercent(percent);
+        setProgress(progress);
       },
-      (err) => console.log(err),
+      (error) => {
+        //error function...
+        console.log(error);
+        alert(error.message);
+      },
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          firedb
+            .database()
+            .ref("contest")
+            .push(
+              {
+                challengename: challengename,
+                startdate: startdate,
+                enddate: enddate,
+                description: description,
+                img: url,
+                level: level,
+              },
+              (err) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Details submitted successfully");
+                }
+              }
+            );
         });
       }
     );
     setState(initialState);
   };
+
   return (
     <>
       <div className="CreateChallenges-main">
@@ -134,7 +140,11 @@ export default function CreateChallenges() {
           <label className="CreateChallenges-blanks">Image</label>
           <br />
           <div className="image-preview">
-            <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" srcset="" />
+            <img
+              src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              alt=""
+              srcset=""
+            />
           </div>
           <input
             type="file"
@@ -142,15 +152,20 @@ export default function CreateChallenges() {
             id=""
             value={img}
             accept="image/*"
-            onChange={fileHandleInput}
+            onChange={handleInputChange}
             className="create-challenge-form-fileds"
           />{" "}
-          <p>{percent}% Done</p>
+          <h3>{progress}% Done</h3>
           <br />
           <label className="CreateChallenges-blanks">Level Type</label>
           <br />
-            
-          <select name="level" id="" value={level} onChange={handleInputChange} className="create-challenge-form-select">
+          <select
+            name="level"
+            id=""
+            value={level}
+            onChange={handleInputChange}
+            className="create-challenge-form-select"
+          >
             <option className="create-challenge-options">Easy</option>
             <option className="create-challenge-options">Medium</option>
             <option className="create-challenge-options">Hard</option>

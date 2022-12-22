@@ -3,21 +3,20 @@ import "./EditChallenges.css";
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firedb, storage } from "../../firebase";
-// import { v4 as uuidv4} from 'uuid'
-
 
 export default function EditChallenges(props) {
-    const initialState = {
-        challengename:props.data.challengename,
-        startdate: props.data.startdate,
-        enddate:props.data.enddate,
-        description:props.data.description,
-        img:props.data.img,
-        level:props.data.level,
-      };
+  const initialState = {
+    challengename: props.data.challengename,
+    startdate: props.data.startdate,
+    enddate: props.data.enddate,
+    description: props.data.description,
+    img: props.data.img,
+    level: props.data.level,
+  };
 
   const [state, setState] = useState(initialState);
-  const [percent, setPercent] = useState("0");
+  const [progress, setProgress] = useState(0);
+  const [file, setFile] = useState();
   const { challengename, startdate, enddate, description, img, level } = state;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,58 +24,75 @@ export default function EditChallenges(props) {
       ...state,
       [name]: value,
     }));
+
+    if (e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
   };
 
-console.log(props.data.key);
-console.log(props);
-console.log(state);
   const handleGenerate = (e) => {
     e.preventDefault();
-
-    firedb
-    .database()
-    .ref("contest")
-    .child(props.data.key)
-      .update(state, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Details edited successfully");
-        }
-      });
-
-    if (!img) {
+    if (!file) {
       alert("Please choose a file first!");
+      return;
     }
 
     let filename = img.replace(/^.*[\\\/]/, "");
-    // const uid = uuidv4();
     const storageRef = ref(storage, `images/${filename}`);
     const metadata = {
-      contentType: 'image/png'
-     
+      contentType: "image/*",
     };
-    const uploadTask = uploadBytesResumable(storageRef, filename, metadata);
 
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const percent = Math.round(
+        // progress function
+        const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-
-        // update progress
-        setPercent(percent);
+        setProgress(progress);
       },
-      (err) => console.log(err),
+      (error) => {
+        //error function...
+        console.log(error);
+        alert(error.message);
+      },
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          firedb
+            .database()
+            .ref("contest")
+            .child(props.data.key)
+            .update(
+              {
+                challengename: challengename,
+                startdate: startdate,
+                enddate: enddate,
+                description: description,
+                img: url,
+                level: level,
+              },
+              (err) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("Details edited successfully");
+                }
+              }
+            );
         });
       }
     );
-    setState(initialState);
+    setState({
+      challengename: "",
+      startdate: "",
+      enddate: "",
+      description: "",
+      img: "",
+      level: "Easy",
+    });
   };
 
   return (
@@ -93,7 +109,7 @@ console.log(state);
             value={challengename}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
-            />
+          />
           <br />
           <label className="EditChallenges-blanks">Start Date</label>
           <br />
@@ -134,27 +150,28 @@ console.log(state);
           <label className="EditChallenges-blanks">Image</label>
           <br />
           <div className="image-preview">
-            <img
-             defaultValue={state.img} 
-             src=""/>
+            <img src={state.img} />
           </div>
-          {/* <input
+          <input
             type="file"
             name="img"
             id=""
-            value={img}
             accept="image/*"
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
-          />{" "} */}
-          <p>{percent}% Done</p>
+          />{" "}
+          <p>{progress}% Done</p>
           <br />
           <label className="EditChallenges-blanks">Level Type</label>
           <br />
-            
-          <select name="level" id=""
-           defaultValue={state.level}
-            value={level} onChange={handleInputChange} className="create-challenge-form-select">
+          <select
+            name="level"
+            id=""
+            defaultValue={state.level}
+            value={level}
+            onChange={handleInputChange}
+            className="create-challenge-form-select"
+          >
             <option className="edit-challenge-options">Easy</option>
             <option className="edit-challenge-options">Medium</option>
             <option className="edit-challenge-options">Hard</option>
