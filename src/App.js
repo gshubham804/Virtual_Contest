@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route  } from "react-router-dom";
 import DeleteModal from './Components/Challenge Details Page/DeleteModal';
 
 function App() {
-  const [childData, setChildData] = useState("");
+  const [childData, setChildData] = useState([]);
   return (
     <>
     <Router>

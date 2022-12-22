@@ -3,7 +3,7 @@ import "./EditChallenges.css";
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firedb, storage } from "../../firebase";
-import { v4 as uuidv4} from 'uuid'
+// import { v4 as uuidv4} from 'uuid'
 
 
 export default function EditChallenges(props) {
@@ -16,7 +16,7 @@ export default function EditChallenges(props) {
         level:props.data.level,
       };
 
-  const [state, setState] = useState([initialState]);
+  const [state, setState] = useState(initialState);
   const [percent, setPercent] = useState("0");
   const { challengename, startdate, enddate, description, img, level } = state;
   const handleInputChange = (e) => {
@@ -26,29 +26,32 @@ export default function EditChallenges(props) {
       [name]: value,
     }));
   };
-  let i= firedb
-  .database()
-  .ref("contest/")
-  .child(`${props.data.uid}`)
-  console.log(i);
+
+console.log(props.data.key);
+console.log(props);
+console.log(state);
   const handleGenerate = (e) => {
     e.preventDefault();
-  
-      // .update(state, (err) => {
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log("Details edited successfully");
-      //   }
-      // });
+
+    firedb
+    .database()
+    .ref("contest")
+    .child(props.data.key)
+      .update(state, (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Details edited successfully");
+        }
+      });
 
     if (!img) {
       alert("Please choose a file first!");
     }
 
     let filename = img.replace(/^.*[\\\/]/, "");
-    const uid = uuidv4();
-    const storageRef = ref(storage, `images/${uid}/${filename}`);
+    // const uid = uuidv4();
+    const storageRef = ref(storage, `images/${filename}`);
     const metadata = {
       contentType: 'image/png'
      
@@ -86,7 +89,7 @@ export default function EditChallenges(props) {
           <input
             type="text"
             name="challengename"
-            defaultValue={state[0].challengename}
+            defaultValue={state.challengename}
             value={challengename}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
@@ -98,7 +101,7 @@ export default function EditChallenges(props) {
             type="date"
             name="startdate"
             id=""
-            defaultValue={state[0].startdate}
+            defaultValue={state.startdate}
             value={startdate}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
@@ -110,7 +113,7 @@ export default function EditChallenges(props) {
             type="date"
             name="enddate"
             id=""
-            defaultValue={state[0].enddate}
+            defaultValue={state.enddate}
             value={enddate}
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
@@ -123,7 +126,7 @@ export default function EditChallenges(props) {
             id=""
             cols="30"
             rows="10"
-            defaultValue={state[0].description}
+            defaultValue={state.description}
             value={description}
             onChange={handleInputChange}
           ></textarea>
@@ -132,10 +135,10 @@ export default function EditChallenges(props) {
           <br />
           <div className="image-preview">
             <img
-             defaultValue={state[0].img} 
+             defaultValue={state.img} 
              src=""/>
           </div>
-          <input
+          {/* <input
             type="file"
             name="img"
             id=""
@@ -143,14 +146,14 @@ export default function EditChallenges(props) {
             accept="image/*"
             onChange={handleInputChange}
             className="edit-challenge-form-fileds"
-          />{" "}
+          />{" "} */}
           <p>{percent}% Done</p>
           <br />
           <label className="EditChallenges-blanks">Level Type</label>
           <br />
             
           <select name="level" id=""
-           defaultValue={state[0].level}
+           defaultValue={state.level}
             value={level} onChange={handleInputChange} className="create-challenge-form-select">
             <option className="edit-challenge-options">Easy</option>
             <option className="edit-challenge-options">Medium</option>

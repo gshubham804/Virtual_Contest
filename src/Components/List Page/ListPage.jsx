@@ -20,13 +20,14 @@ export const ListPage = ({ setChildData }) => {
     let data = firebase.database().ref("/contest");
     data.on("value", (snapshot) => {
       const results = snapshot.val(); 
-      let alldata=[];
-      for(let parentkey of Object.keys(results)){
-      let key = Object.keys(results[parentkey]);
-      let data = results[parentkey][key];
-      alldata.push(data);
-      }
-      setdata(alldata)
+      setdata(results);
+      // let alldata=[];
+      // for(let parentkey of Object.keys(results)){
+      // let key = Object.keys(results[parentkey]);
+      // let data = results[parentkey][key];
+      // alldata.push(data);
+      // }
+      // setdata(alldata)
     });
   }, [search]);
 
@@ -242,6 +243,9 @@ export const ListPage = ({ setChildData }) => {
       </div>
       <Link to="/challengedetails" style={{ color: 'black',textDecoration:'none' }}>
       <div className="ListPage-cardsection">
+        {/* {
+          console.log(Object.keys(datas))
+        } */}
         {Object.keys(datas)
           .filter(
             (val) =>
@@ -254,7 +258,7 @@ export const ListPage = ({ setChildData }) => {
               <div
                 className="ListPage-card"
                 onClick={() => {
-                  setChildData(datas[val]);
+                  setChildData({...datas[val] , key:val});
                 }}
               >
                 <div className="ListPage-card-first">

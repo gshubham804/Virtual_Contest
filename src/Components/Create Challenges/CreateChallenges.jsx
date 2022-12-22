@@ -3,9 +3,9 @@ import "./CreateChallenges.css";
 import { useState } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { firedb, storage } from "../../firebase";
-import { v4 as uuidv4} from 'uuid'
+// import { v4 as uuidv4} from 'uuid'
 
-let uid = uuidv4();
+// let uid = uuidv4();
 const initialState = {
   challengename: "",
   startdate: "",
@@ -13,13 +13,14 @@ const initialState = {
   description: "",
   img: "",
   level: "",
-  uid:uid,
+  // uid:uid,
 };
 
 export default function CreateChallenges() {
   const [state, setState] = useState(initialState);
   const [percent, setPercent] = useState("0");
-  const { challengename, startdate, enddate, description, img, level,uid } = state;
+  const[file,setFile] = useState();
+  const { challengename, startdate, enddate, description, img, level } = state;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState((state) => ({
@@ -28,12 +29,17 @@ export default function CreateChallenges() {
     }));
   };
 
+  const fileHandleInput=(e)=>{
+    if(e.target.files[0]){
+      setFile(e.target.files[0]);
+    }
+  }
+
   const handleGenerate = (e) => {
     e.preventDefault();
    firedb
       .database()
-      .ref()
-      .child("contest/"+uid)
+      .ref('contest')
       .push(state, (err) => {
         if (err) {
           console.log(err);
@@ -44,18 +50,18 @@ export default function CreateChallenges() {
 
       
 
-    if (!img) {
+    if (!file) {
       alert("Please choose a file first!");
+      return;
     }
 
     let filename = img.replace(/^.*[\\\/]/, "");
-    const storageRef = ref(storage, `images/${uid}/${filename}`);
+    const storageRef = ref(storage, `images/${filename}`);
     const metadata = {
       contentType: 'image/png'
-     
     };
-    const uploadTask = uploadBytesResumable(storageRef, filename, metadata);
 
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -136,7 +142,7 @@ export default function CreateChallenges() {
             id=""
             value={img}
             accept="image/*"
-            onChange={handleInputChange}
+            onChange={fileHandleInput}
             className="create-challenge-form-fileds"
           />{" "}
           <p>{percent}% Done</p>
