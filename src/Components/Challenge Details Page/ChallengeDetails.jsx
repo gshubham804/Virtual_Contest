@@ -3,24 +3,16 @@ import "./ChallengeDetails.css";
 import { ImStatsBars2 } from "react-icons/im";
 import { MdTimer } from "react-icons/md";
 import moment from "moment";
-import firebase from "firebase/compat/app";
 import {Link} from 'react-router-dom'
 import DeleteModal from "./DeleteModal";
 import { useState } from "react";
 
 const ChallengeDetails = (props) => {
+  
   const[isOpen,setIsOpen]= useState(true);
-    const editHandler=()=>{
-
-    }
 
     const deleteHandler=()=>{
       setIsOpen(!isOpen)
-      if(isOpen)
-      document.querySelector('.challengeDetails-main').style.opacity = '0.4'
-      else
-      document.querySelector('.challengeDetails-main').style.opacity = '1'
-
     }
 
   return (
@@ -44,7 +36,7 @@ const ChallengeDetails = (props) => {
               <h2>Overview</h2>
             </div>
             <div className="challengeDetails-second-first-second-box">
-             <button onClick={editHandler} className="challengeDetails-button-second"><Link to="/edit" style={{color: '#FFF',textDecoration:'none' }}>Edit</Link></button>
+             <button className="challengeDetails-button-second"><Link to="/edit" style={{color: '#FFF',textDecoration:'none' }}>Edit</Link></button>
               <button onClick={deleteHandler} className="challengeDetails-button-third">Delete</button>
             </div>
           </div>
