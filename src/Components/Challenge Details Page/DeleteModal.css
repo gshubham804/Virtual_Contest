@@ -1,3 +1,9 @@
+.deletemodal-sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .deletemodal-main {
   position: absolute;
   height: 100vh;

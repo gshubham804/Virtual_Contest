@@ -8,7 +8,6 @@ import DeleteModal from "./DeleteModal";
 import { useState } from "react";
 
 const ChallengeDetails = (props) => {
-  
   const[isOpen,setIsOpen]= useState(true);
 
     const deleteHandler=()=>{
@@ -88,7 +87,7 @@ const ChallengeDetails = (props) => {
           </div>
         </div>
       </div>
-      {!isOpen && <DeleteModal />}
+      {!isOpen && <DeleteModal data={props} />}
     </>
   );
 };
