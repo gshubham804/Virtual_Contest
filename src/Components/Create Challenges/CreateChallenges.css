@@ -114,35 +114,4 @@ input[type="text"] {
     height: 40px;
   padding-top: 0.4rem;
   }
-  
-  .create-challenge-form-select {
-    width: 236px;
-    height: 39px;
-    margin-bottom: 2rem;
-  }
-  
-  .create-challenge-options{
-    font-family: "Poppins", sans-serif;
-    text-align: start;
-  }
-  
-  input[type="text"] {
-    line-height: 25px;
-  }
-  
-  .CreateChallenges-btn {
-    width: 214px;
-    height: 46px;
-    background: #44924c;
-    border-radius: 10px;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    text-align: center;
-    color: #ffffff;
-    border: 0px;
-    cursor: pointer;
-  }
 }

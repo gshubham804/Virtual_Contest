@@ -1,4 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .EditChallenges-main {
   margin: 0%;
   padding-left: 4rem;
@@ -82,4 +82,37 @@ input[type="text"] {
   color: #ffffff;
   border: 0px;
   cursor: pointer;
-} */
+}
+
+@media screen and (max-width: 480px) {
+  .EditChallenges-main {
+    padding-left: 1rem;
+  }
+  
+  .edit-challenge-form-fileds, .edit-challenge-form-select{
+    width: 300px;
+  }
+  
+  textarea {
+    border: 1px solid #b7b7b7;
+    border-radius: 5px;
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    width: 317px;
+    height: 132px;
+    font-size: 1.1rem;
+  }
+  
+  .image-preview>*{
+    height: 150px;
+    width: 300px;
+    margin-bottom: 1rem;
+  }
+  
+  input[type="file"]{
+    width: 236px;
+    height: 40px;
+  padding-top: 0.4rem;
+  }
+}
+
