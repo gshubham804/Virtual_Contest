@@ -211,7 +211,7 @@
   .listpage-filter-option {
     position: absolute;
     top: 228px;
-    left: 122px;
+    left: 112px;
   }
 
   .ListPage-card {
@@ -225,7 +225,7 @@
 @media only screen and (max-width: 768px) and (min-width: 481px)  {
   .ListPage-searchsection {
     padding-top: 1rem;
-    padding-bottom: 22rem;
+    padding-bottom: 14rem;
     background: rgb(0, 42, 59);
     color: #fff;
   }
@@ -241,18 +241,18 @@
     width: 529px;
     height: 50px;
     left: 115px;
-    top: 150px;
+    top: 90px;
   }
 
   .listpage-filter {
     position: absolute;
     left: 295px;
-    top: 230px;
+    top: 180px;
   }
 
   .listpage-filter-option {
     position: absolute;
-    top: 280.5px;
+    top: 229px;
     left: 295px;
   }
 
@@ -270,24 +270,26 @@
     color: #fff;
   }
 
-  .ListPage-searchsection > h2 {
+  .listpage-searchsection-heading > h2 {
     position: absolute;
+    top:20px;
     left: 320px;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .ListPage-searchsection > input[type="text"] {
     width: 629px;
-    height: 50px;
+    height: 60px;
     left: 188px;
-    top: 145px;
+    top: 115px;
   }
 
   .listpage-filter {
     position: absolute;
+    height: 60px;
     left: 445px;
-    top: 225px;
+    top: 215px;
   }
 
   .listpage-filter-option {

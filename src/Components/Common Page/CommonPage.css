@@ -80,15 +80,11 @@
 }
 
 @media only screen and (max-width: 768px) and (min-width: 481px) {
-  .CommonPage-main {
-    height: 78vh;
-  }
 
   .CommonPage-main-first {
-    padding-top: 1rem;
+    padding-top: 2rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    height: 100%;
   }
 
   .CommonPage-main-first > h1 {
@@ -96,43 +92,30 @@
     font-weight: 600;
     font-size: 38px;
     line-height: 48px;
-    padding-bottom: 0rem;
+    padding-bottom: 2rem;
   }
 
   .CommonPage-main-first > h3 {
     width: 100%;
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: 400;
+    font-size: 22px;
     line-height: 35px;
     padding-bottom: 4rem;
     text-align: justify;
   }
 
   .CommonPage-main-first-btn {
-    width: 222px;
-    height: 70px;
+    width: 250px;
+    height: 68px;
     font-size: 24px;
   }
-
-  /* .CommonPage-main-first > img {
-      position: absolute;
-      width: 350px;
-      height: 354px;
-      left: 195px;
-      top: 530px;
-    }  */
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 769px) {
-  .CommonPage-main {
-    height: 78vh;
-  }
-
   .CommonPage-main-first {
     padding-top: 1rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    height: 100%;
   }
 
   .CommonPage-main-first > h1 {
@@ -140,29 +123,23 @@
     font-weight: 600;
     font-size: 45px;
     line-height: 55px;
-    padding-bottom: 0rem;
+    padding-bottom: 2rem;
   }
 
   .CommonPage-main-first > h3 {
     width: 100%;
-    font-weight: 500;
-    font-size: 25px;
+    font-weight: 400;
+    font-size: 22px;
     line-height: 35px;
     padding-bottom: 3rem;
     text-align: justify;
   }
 
   .CommonPage-main-first-btn {
-    width: 222px;
+    width: 250px;
     height: 70px;
     font-size: 24px;
   }
 
-  /* .CommonPage-main-first > img {
-      position: absolute;
-      width: 380px;
-      height: 384px;
-      left: 550px;
-      top: 500px;
-    }  */
+  
 }
