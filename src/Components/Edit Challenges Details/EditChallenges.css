@@ -36,8 +36,8 @@ textarea {
     border-radius: 5px;
     padding-top: 1rem;
     padding-left: 0.5rem;
-    width: 817px;
-    height: 252px;
+    width: 417px;
+  height: 152px;
     font-size: 1.1rem;
   }
 
@@ -50,7 +50,7 @@ textarea {
 input[type="file"]{
   width: 236px;
   height: 40px;
-padding-top: 1rem;
+padding-top: 0.4rem;
 }
 
 .edit-challenge-form-select {

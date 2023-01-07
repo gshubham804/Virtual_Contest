@@ -165,3 +165,123 @@
         justify-content: space-around;
     }
 }
+
+@media only screen and (max-width: 768px) and (min-width: 481px)  {
+    .challengeDetails-first-div{
+        padding:2rem 1rem;
+        width: 100vw;
+    }
+    
+    .timer-icon{
+        font-size: 2.8rem;
+        margin:0rem 1rem;
+    }
+
+    .timer-icon-para{
+        text-align: justify;
+        width: 100%;
+    }
+    
+    .challengeDetails-timer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        padding:0.6rem;
+    }
+    
+    .challengeDetails-first-div>h1{
+        line-height: 60px;
+    }
+    
+    .challengeDetails-first-div>p{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 30px;
+    }
+    
+    .challengeDetails-first-div>button{
+        margin-top: 1.5rem;
+    }
+    
+    .challengeDetails-second-div{
+        padding: 1rem;
+    }
+    
+    .challengeDetails-second-first-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .challengeDetails-second-first-second-box{
+        margin: 1rem;
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 769px)  {
+    .challengeDetails-first-div{
+        padding:2rem 2rem;
+        width: 100vw;
+    }
+    
+    .timer-icon{
+        font-size: 2.8rem;
+        margin:0rem 1rem;
+    }
+
+    .timer-icon-para{
+        text-align: justify;
+        width: 100%;
+    }
+    
+    .challengeDetails-timer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        padding:0.6rem;
+    }
+    
+    .challengeDetails-first-div>h1{
+        line-height: 60px;
+    }
+    
+    .challengeDetails-first-div>p{
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 30px;
+    }
+    
+    .challengeDetails-first-div>button{
+        margin-top: 1.5rem;
+    }
+    
+    .challengeDetails-second-div{
+        padding: 1rem;
+    }
+    
+    .challengeDetails-second-first-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .challengeDetails-second-first-second-box{
+        margin: 1rem;
+        width: 22%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+}

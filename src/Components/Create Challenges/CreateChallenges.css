@@ -36,8 +36,8 @@ textarea {
   border-radius: 5px;
   padding-top: 1rem;
   padding-left: 0.5rem;
-  width: 817px;
-  height: 252px;
+  width: 417px;
+  height: 152px;
   font-size: 1.1rem;
 }
 
@@ -50,7 +50,7 @@ textarea {
 input[type="file"]{
   width: 236px;
   height: 40px;
-padding-top: 1rem;
+padding-top: 0.4rem;
 }
 
 .create-challenge-form-select {
@@ -82,4 +82,16 @@ input[type="text"] {
   color: #ffffff;
   border: 0px;
   cursor: pointer;
+}
+
+@media screen and (max-width:480px) {
+
+}
+
+@media only screen and (min-width:481px) and (max-width:768px){
+
+}
+
+@media only screen and (min-width:769px) and (max-width:1024px) {
+
 }
