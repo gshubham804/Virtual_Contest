@@ -20,7 +20,7 @@ const ChallengeDetails = (props) => {
         <div className="challengeDetails-first-div">
           <div className="challengeDetails-timer">
             <MdTimer className="timer-icon" />
-            <h4>Starts on {moment(props.data.startdate).format("MMM Do YY")} 09:00 PM (Indian Standard Time)</h4>
+            <h4 className="timer-icon-para">Starts on {moment(props.data.startdate).format("MMM Do YY")} 09:00 PM (Indian Standard Time)</h4>
           </div>
           <h1>{props.data.challengename}</h1>
           <p>{props.data.description}</p>
