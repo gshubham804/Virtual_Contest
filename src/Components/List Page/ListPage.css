@@ -8,7 +8,7 @@
   color: #fff;
 }
 
-.ListPage-searchsection > h2 {
+.listpage-searchsection-heading > h2 {
   text-align: center;
   font-size: 2rem;
 }
@@ -18,7 +18,7 @@
   width: 829px;
   height: 50px;
   left: 180px;
-  top: 150px;
+  top: 100px;
   box-shadow: 0px 4px 50px rgba(111, 111, 111, 0.1);
   border-radius: 12px;
   background: #ffffff;
@@ -31,10 +31,10 @@
 
 .listpage-filter {
   position: absolute;
-  width: 132px;
+  width: 148px;
   height: 50px;
   left: 1100px;
-  top: 150px;
+  top: 100px;
   background: #ffffff;
   border: 1px solid #eaeaea;
   font-size: 18px;
@@ -55,12 +55,12 @@
 }
 
 .listpage-filter-option {
+  padding-top: 0.8rem;
   position: absolute;
-  top: 200.2px;
+  top: 150px;
   left: 1100px;
   width: 148px;
   background: #ffffff;
-  opacity: 0.9;
   border: 1px solid #eaeaea;
   border-radius: 12px;
   font-family: "Poppins", sans-serif;
@@ -73,9 +73,14 @@
 
 .listpage-filter-option > h3 {
   line-height: 5px;
+  padding-bottom: 0.8rem;
   font-size: 18px;
   font-weight: 500;
   color: #000000;
+}
+
+.listpage-filter-option>h3:last-of-type{
+  padding: 0.8rem 0;
 }
 
 .listpage-filter-option > label {
@@ -108,6 +113,8 @@
   padding: 3rem 0rem;
   display: flex;
   flex-wrap: wrap;
+  justify-self: center;
+  align-items: center;
 }
 
 .ListPage-card {
@@ -143,6 +150,7 @@
 .ListPage-card-second > h2 {
   line-height: 0px;
   margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .ListPage-card-second > p:first-of-type {
@@ -150,11 +158,12 @@
   text-align: center;
   background: rgba(242, 201, 76, 0.25);
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px;
 }
 
 .ListPage-card-second > p:last-of-type {
   font-weight: 600;
+  padding: 8px;
 }
 
 .ListPage-card-second > button {
@@ -176,39 +185,37 @@
 @media screen and (max-width: 480px) {
   .ListPage-searchsection {
     padding-top: 1.5rem;
-    padding-bottom: 18rem;
+    padding-bottom: 15rem;
     background: rgb(0, 42, 59);
     color: #fff;
   }
 
-  .ListPage-searchsection > h2 {
-    position: absolute;
-    left: 90px;
+  .listpage-searchsection-heading > h2 {
     text-align: center;
     font-size: 2rem;
-  }
+  } 
 
   .ListPage-searchsection > input[type="text"] {
     width: 329px;
     height: 50px;
-    left: 50px;
-    top: 120px;
+    left:22px;
+    top: 100px;
   }
 
   .listpage-filter {
     position: absolute;
-    left: 152px;
-    top: 200px;
+    left: 112px;
+    top: 180px;
   }
 
   .listpage-filter-option {
     position: absolute;
-    top: 241px;
-    left: 152px;
+    top: 228px;
+    left: 122px;
   }
 
   .ListPage-card {
-    margin-left: 4.8rem;
+    margin-left: 2.5rem;
     margin-bottom: 4rem;
     width: 300px;
     height: 443px;
@@ -223,7 +230,7 @@
     color: #fff;
   }
 
-  .ListPage-searchsection > h2 {
+  listpage-searchsection-heading > h2 {
     position: absolute;
     left: 165px;
     text-align: center;

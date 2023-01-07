@@ -1,5 +1,5 @@
 .nav-icon{
-    height: 60px;
+    height: 80px;
     width: 100vw;
     background-color: white;
     padding-top: 0.1rem;
@@ -21,7 +21,7 @@
     }
     
     .nav-icon>img{
-        margin-left: 4rem;
+        margin-left: 2rem;
         height: 100%;
     }
   }

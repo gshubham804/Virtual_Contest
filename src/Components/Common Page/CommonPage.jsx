@@ -14,9 +14,10 @@ export default function CommonPage() {
                 through competitions.</h3>
     <button className='CommonPage-main-first-btn'><Link to="/createchallenge" style={{color:'black',textDecoration:'none' }}>
 Create Challenge</Link></button>
+        </div>
+        <div className="CommonPage-main-second">
     <img src="https://dphi.tech/static/images/challenges/challenges_hero.png" alt=""/>
         </div>
-        <div className="CommonPage-main-second"></div>
     </div>
     </>
   )

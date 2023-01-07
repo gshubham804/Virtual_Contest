@@ -129,7 +129,9 @@ export const ListPage = ({ setChildData }) => {
       <div className="ListPage-main">
         <div className="listpage-elements">
           <div className="ListPage-searchsection">
+            <div className="listpage-searchsection-heading">
             <h2>Explore Challenges</h2>
+            </div>
             <input
               className="search-bar-on-click"
               type="text"
