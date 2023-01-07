@@ -15,7 +15,6 @@ const initialState = {
 
 export default function CreateChallenges() {
   const [state, setState] = useState(initialState);
-  const [progress, setProgress] = useState(0);
   const [file, setFile] = useState();
   const { challengename, startdate, enddate, description, img, level } = state;
 
@@ -52,7 +51,6 @@ export default function CreateChallenges() {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        setProgress(progress);
       },
       (error) => {
         //error function...
@@ -155,7 +153,6 @@ export default function CreateChallenges() {
             onChange={handleInputChange}
             className="create-challenge-form-fileds"
           />{" "}
-          <h3>{progress}% Done</h3>
           <br />
           <label className="CreateChallenges-blanks">Level Type</label>
           <br />

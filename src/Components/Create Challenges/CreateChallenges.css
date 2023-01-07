@@ -84,14 +84,65 @@ input[type="text"] {
   cursor: pointer;
 }
 
-@media screen and (max-width:480px) {
-
-}
-
-@media only screen and (min-width:481px) and (max-width:768px){
-
-}
-
-@media only screen and (min-width:769px) and (max-width:1024px) {
-
+@media screen and (max-width: 480px) {
+  .CreateChallenges-main {
+    padding-left: 2rem;
+  }
+  
+  .create-challenge-form-fileds, .create-challenge-form-select{
+    width: 300px;
+  }
+  
+  textarea {
+    border: 1px solid #b7b7b7;
+    border-radius: 5px;
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    width: 317px;
+    height: 132px;
+    font-size: 1.1rem;
+  }
+  
+  .image-preview>*{
+    height: 150px;
+    width: 300px;
+    margin-bottom: 1rem;
+  }
+  
+  input[type="file"]{
+    width: 236px;
+    height: 40px;
+  padding-top: 0.4rem;
+  }
+  
+  .create-challenge-form-select {
+    width: 236px;
+    height: 39px;
+    margin-bottom: 2rem;
+  }
+  
+  .create-challenge-options{
+    font-family: "Poppins", sans-serif;
+    text-align: start;
+  }
+  
+  input[type="text"] {
+    line-height: 25px;
+  }
+  
+  .CreateChallenges-btn {
+    width: 214px;
+    height: 46px;
+    background: #44924c;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #ffffff;
+    border: 0px;
+    cursor: pointer;
+  }
 }
