@@ -86,7 +86,7 @@ input[type="text"] {
 
 @media screen and (max-width: 480px) {
   .CreateChallenges-main {
-    padding-left: 2rem;
+    padding-left: 1rem;
   }
   
   .create-challenge-form-fileds, .create-challenge-form-select{
